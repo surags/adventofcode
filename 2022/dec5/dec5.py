@@ -1,5 +1,4 @@
-instructionList = []
-crateState = {}
+
 
 def parseInstructions(instructionListLines: list):
     for line in instructionListLines:
@@ -10,7 +9,7 @@ def parseInstructions(instructionListLines: list):
         instruction['from'] = tokens[3]
         instruction['to'] = tokens[5]
         instructionList.append(instruction)
-    print(instructionList)
+    # print(instructionList)
     return
 
 def parseCrateState(crateStateLines: list):
@@ -28,7 +27,7 @@ def parseCrateState(crateStateLines: list):
                 if cratesStateLine[crateState[crate]['index']] != ' ':
                     crateState[crate]['state'].append(cratesStateLine[crateState[crate]['index']])
 
-    print(crateState)
+    # print(crateState)
     return
 
 def parseInputs():
@@ -79,8 +78,14 @@ def performOperationsPart2(crateState, instructionList):
         performOperation(crateState, instruction['count'], instruction['from'], instruction['to'], maintainOrder=True)
     return
 
+instructionList = []
+crateState = {}
 parseInputs()
-# performOperationsPart1(crateState, instructionList)
-# determineTopOfCrates(crateState)
+performOperationsPart1(crateState, instructionList)
+determineTopOfCrates(crateState)
+
+instructionList = []
+crateState = {}
+parseInputs()
 performOperationsPart2(crateState, instructionList)
 determineTopOfCrates(crateState)
