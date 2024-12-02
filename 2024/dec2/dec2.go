@@ -170,17 +170,12 @@ func part2BruteForce(input []string) int {
 			sumSafeReports++
 		} else {
 			// remove each level and check
-			//safe := false
 			for i := 0; i < len(report); i++ {
 				shortReport := []int{}
-				for k := 0; k < len(report); k++ {
-					if k != i {
-						shortReport = append(shortReport, report[k])
-					}
-				}
+				shortReport = append(shortReport, report[:i]...)
+				shortReport = append(shortReport, report[i+1:]...)
 				if isReportSafe(shortReport) {
 					sumSafeReports++
-					//safe = true
 					break
 				}
 			}
