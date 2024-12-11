@@ -134,20 +134,6 @@ func blinkNTimesRecurse(stone int, iterNum int, limit int, countCache map[string
 	return count
 }
 
-func listLen(head *node) int {
-	count := 0
-	iter := head
-	for {
-		if iter != nil {
-			count++
-			iter = iter.next
-		} else {
-			break
-		}
-	}
-	return count
-}
-
 func getCacheKey(nodeI, iterCount int) string {
 	return fmt.Sprintf("%d-%d", nodeI, iterCount)
 }
